@@ -8,3 +8,4 @@ edition = "2018"
 [dependencies]
 proptest = "1.0"
 priority-queue = "=1.0.4"
+roaring = "0.7"

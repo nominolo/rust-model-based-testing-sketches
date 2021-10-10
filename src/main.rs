@@ -3,10 +3,14 @@ use std::sync::Arc;
 use priority_queue::PriorityQueue;
 use proptest::prelude::*;
 
+pub mod abstracted;
+pub mod checkroaring;
+
 fn main() {
     println!("Hello, world!");
 }
 
+/*
 fn parse_date(s: &str) -> Option<(u32, u32, u32)> {
     if 10 != s.len() {
         return None;
@@ -67,7 +71,7 @@ proptest! {
         prop_assert_eq!((y, m, d), (y2, m2, d2));
     }
 }
-
+*/
 #[derive(Debug)]
 pub struct PqueueModel {
     items: Vec<(i32, String)>,
@@ -136,7 +140,7 @@ pub fn apply_and_check_result(
             check_result(action, m_result, a_result)
         },
         Action::Remove(item) => {
-            let m_result = model.remove(&item);
+            let m_result = model.remove(item);
             let a_result = actual.remove(item);
             check_result(action, m_result, a_result)
         },
